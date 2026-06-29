@@ -23,7 +23,7 @@ def create_app():
     login_manager.login_view = "auth.login"
 
     # Import models
-    from app.models import User
+    from app.models import User, BillingReport
 
     # Register blueprints
     from app.auth import auth

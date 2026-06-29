@@ -9,8 +9,9 @@ from flask import (
 )
 
 from flask_login import login_required
-
 from werkzeug.utils import secure_filename
+
+from app.services.analytics_service import AnalyticsService
 
 from . import uploads
 
@@ -42,6 +43,10 @@ def upload():
             file.save(filepath)
 
             flash("CSV uploaded successfully!", "success")
+
+            summary = AnalyticsService.analyze_csv(filepath)
+
+            print(summary)
 
             df = pd.read_csv(filepath)
 
