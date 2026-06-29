@@ -5,8 +5,7 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>CloudOptix AI</title>
 
@@ -20,105 +19,216 @@
 
 <body class="bg-light">
 
+<!-- ===================== NAVBAR ===================== -->
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
 
-<div class="container">
+    <div class="container">
 
-<a class="navbar-brand fw-bold"
-   href="/">☁️ CloudOptix AI</a>
+        <a class="navbar-brand fw-bold"
+           href="/">
 
-<button class="navbar-toggler"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbar">
+            ☁️ CloudOptix AI
 
-<span class="navbar-toggler-icon"></span>
+        </a>
 
-</button>
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
 
-<div class="collapse navbar-collapse"
-     id="navbar">
+            <span class="navbar-toggler-icon"></span>
 
-<ul class="navbar-nav ms-auto">
+        </button>
 
-{% if current_user.is_authenticated %}
+        <div class="collapse navbar-collapse"
+             id="navbarNav">
 
-<li class="nav-item">
-    <a class="nav-link" href="/dashboard">Dashboard</a>
-</li>
+            <ul class="navbar-nav ms-auto">
 
-<li class="nav-item">
-    <a class="nav-link" href="/uploads">Uploads</a>
-</li>
+                {% if current_user.is_authenticated %}
 
-<li class="nav-item">
-    <a class="nav-link" href="#">Analytics</a>
-</li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       href="/dashboard">
 
-<li class="nav-item">
-    <a class="nav-link" href="#">Reports</a>
-</li>
+                        📊 Dashboard
 
-<li class="nav-item">
-    <span class="nav-link text-info">
-        👤 {{ current_user.full_name }}
-    </span>
-</li>
+                    </a>
+                </li>
 
-<li class="nav-item">
-    <a class="nav-link text-danger" href="/logout">Logout</a>
-</li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       href="/uploads">
 
-{% else %}
+                        📤 Uploads
 
-<li class="nav-item">
-    <a class="nav-link" href="/">Home</a>
-</li>
+                    </a>
+                </li>
 
-<li class="nav-item">
-    <a class="nav-link" href="/login">Login</a>
-</li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       href="#">
 
-<li class="nav-item">
-    <a class="nav-link" href="/register">Register</a>
-</li>
+                        📈 Analytics
 
-{% endif %}
+                    </a>
+                </li>
 
-</ul>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       href="#">
 
-</div>
+                        📄 Reports
 
-</div>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+
+                    <span class="nav-link text-info">
+
+                        👤 {{ current_user.full_name }}
+
+                    </span>
+
+                </li>
+
+                <li class="nav-item">
+
+                    <a class="nav-link text-danger"
+                       href="/logout">
+
+                        🚪 Logout
+
+                    </a>
+
+                </li>
+
+                {% else %}
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="/">
+
+                        Home
+
+                    </a>
+
+                </li>
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="/login">
+
+                        Login
+
+                    </a>
+
+                </li>
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="/register">
+
+                        Register
+
+                    </a>
+
+                </li>
+
+                {% endif %}
+
+            </ul>
+
+        </div>
+
+    </div>
 
 </nav>
 
+<!-- ===================== PAGE CONTENT ===================== -->
+
 <div class="container mt-4">
 
-{% with messages = get_flashed_messages(with_categories=true) %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
 
-{% if messages %}
+        {% if messages %}
 
-{% for category, message in messages %}
+            {% for category, message in messages %}
 
-<div class="alert alert-{{ category }}">
+                <div class="alert alert-{{ category }} alert-dismissible fade show"
+                     role="alert">
 
-{{ message }}
+                    {{ message }}
+
+                    <button type="button"
+                            class="btn-close"
+                            data-bs-dismiss="alert">
+                    </button>
+
+                </div>
+
+            {% endfor %}
+
+        {% endif %}
+
+    {% endwith %}
+
+    {% block content %}
+
+    {% endblock %}
 
 </div>
 
-{% endfor %}
+<!-- ===================== FOOTER ===================== -->
 
-{% endif %}
+<footer class="mt-5 bg-dark text-white">
 
-{% endwith %}
+    <div class="container text-center py-4">
 
-{% block content %}
+        <h5>
 
-{% endblock %}
+            ☁️ CloudOptix AI
 
-</div>
+        </h5>
+
+        <p class="mb-1">
+
+            Intelligent Multi-Cloud Cost Optimization Platform
+
+        </p>
+
+        <small>
+
+            Developed by <strong>Shashwat Singh</strong>
+
+        </small>
+
+        <br>
+
+        <small>
+
+            Flask • PostgreSQL • Pandas • Chart.js • SQLAlchemy
+
+        </small>
+
+    </div>
+
+</footer>
+
+<!-- ===================== JS ===================== -->
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+{% block scripts %}
+
+{% endblock %}
 
 </body>
 

@@ -4,63 +4,517 @@
 
 <div class="container mt-4">
 
-    <h2 class="mb-4">
-        Welcome, {{ user.full_name }} 👋
-    </h2>
+    <!-- Dashboard Header -->
 
-    <div class="row">
+	
 
-        <div class="col-md-3">
-            <div class="card shadow-sm text-center p-3">
-                <h6>Cloud Health Score</h6>
-                <h2 class="text-success">92%</h2>
-            </div>
-        </div>
+    <div class="mb-4">
 
-        <div class="col-md-3">
-            <div class="card shadow-sm text-center p-3">
-                <h6>Monthly Cost</h6>
-                <h2>₹74,530</h2>
-            </div>
-        </div>
+        <h2>
 
-        <div class="col-md-3">
-            <div class="card shadow-sm text-center p-3">
-                <h6>Estimated Savings</h6>
-                <h2 class="text-primary">₹12,380</h2>
-            </div>
-        </div>
+            ☁️ CloudOptix AI Dashboard
 
-        <div class="col-md-3">
-            <div class="card shadow-sm text-center p-3">
-                <h6>Reports Uploaded</h6>
-                <h2>0</h2>
-            </div>
-        </div>
+        </h2>
+
+        <p class="text-muted">
+
+            Welcome back,
+            <strong>{{ user.full_name }}</strong> 👋
+
+            <br>
+
+            Monitor, analyze and optimize your cloud infrastructure costs.
+
+        </p>
 
     </div>
 
-    <div class="card mt-5 shadow-sm">
+    
 
-        <div class="card-body">
+<div class="card shadow-sm mb-4">
 
-            <h4>Recent Activity</h4>
+    <div class="card-body">
 
-            <hr>
+        <h4>
 
-            <p>No billing reports uploaded yet.</p>
+            📊 Dashboard Summary
 
-            <a href="#"
-               class="btn btn-primary">
+        </h4>
 
-                Upload Billing Report
+        <hr>
 
-            </a>
+        <div class="row text-center">
+
+            <div class="col-md-3">
+
+                <h6>💰 Lifetime Spend</h6>
+
+                <h3 class="text-primary">
+
+                    ₹{{ lifetime_cost }}
+
+                </h3>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <h6>📂 Total Reports</h6>
+
+                <h3>
+
+                    {{ report_count }}
+
+                </h3>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <h6>📈 Average Spend</h6>
+
+                <h3>
+
+                    ₹{{ average_monthly_cost }}
+
+                </h3>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <h6>📅 Last Upload</h6>
+
+                <h5>
+
+                    {{ last_upload }}
+
+                </h5>
+
+            </div>
 
         </div>
 
     </div>
 
 </div>
+
+{% if report %}
+
+    <!-- Statistics Cards -->
+
+    <div class="row">
+
+        <div class="col-md-3 mb-3">
+
+            <div class="card shadow-sm text-center p-3">
+
+                <h6>☁ Cloud Health</h6>
+
+                <h2 class="text-success">85%</h2>
+
+                <div class="progress mt-3">
+
+                    <div class="progress-bar bg-success"
+                         role="progressbar"
+                         style="width:85%;">
+
+                        85%
+
+                    </div>
+
+                </div>
+
+                <small class="text-success mt-2">
+
+                    ● Healthy Infrastructure
+
+                </small>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3 mb-3">
+
+            <div class="card shadow-sm text-center p-3">
+
+                <h6>💰 Monthly Cost</h6>
+
+                <h2>₹{{ report.total_cost }}</h2>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3 mb-3">
+
+            <div class="card shadow-sm text-center p-3">
+
+                <h6>💸 Estimated Savings</h6>
+
+                <h2 class="text-primary">
+
+                    ₹{{ report.estimated_savings }}
+
+                </h2>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3 mb-3">
+
+            <div class="card shadow-sm text-center p-3">
+
+                <h6>📂 Reports Uploaded</h6>
+
+                <h2>{{ report_count }}</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Dashboard Buttons -->
+
+    <div class="text-center mb-4">
+
+        <a href="/uploads"
+           class="btn btn-primary btn-lg me-3">
+
+            📤 Upload New Report
+
+        </a>
+
+        <a href="/download-report"
+			class="btn btn-success btn-lg">
+
+			📄 Download Executive Report
+
+		</a>
+
+    </div>
+
+    <!-- Analytics Cards -->
+
+    <div class="row">
+
+        <div class="col-md-6 mb-3">
+
+            <div class="card shadow-sm p-4">
+
+                <h4>
+
+                    🏆 Top Spending Service
+
+                </h4>
+
+                <hr>
+
+                <h2>
+
+                    {{ report.highest_service }}
+
+                </h2>
+
+                <h4 class="text-danger">
+
+                    ₹{{ report.highest_cost }}
+
+                </h4>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-6 mb-3">
+
+            <div class="card shadow-sm p-4">
+
+                <h4>
+
+                    📊 Average Service Cost
+
+                </h4>
+
+                <hr>
+
+                <h2>
+
+                    ₹{{ report.average_cost }}
+
+                </h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Chart -->
+
+    <div class="card shadow-sm p-4 mb-4">
+
+        <h4>
+
+            📈 Cloud Cost Analytics
+
+        </h4>
+
+        <canvas id="costChart"></canvas>
+
+    </div>
+    
+	<!-- Upload History -->
+
+<div class="card shadow-sm mt-4">
+
+    <div class="card-header bg-dark text-white">
+
+        <h4 class="mb-0">
+
+            📂 Upload History
+
+        </h4>
+
+    </div>
+
+    <div class="card-body">
+
+        <div class="mb-3">
+
+            <input
+                type="text"
+                id="searchInput"
+                class="form-control"
+                placeholder="🔍 Search uploaded reports...">
+
+        </div>
+
+
+        <table class="table table-striped table-hover">
+
+            <thead>
+
+                <tr>
+
+                    <th>#</th>
+
+                    <th>Filename</th>
+
+                    <th>Total Cost</th>
+
+                    <th>Top Service</th>
+
+                    <th>Uploaded At</th>
+
+					<th>Action</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for item in reports %}
+
+                <tr>
+
+                    <td>{{ loop.index }}</td>
+
+                    <td>{{ item.filename }}</td>
+
+                    <td>₹{{ item.total_cost }}</td>
+
+                    <td>{{ item.highest_service }}</td>
+
+                    <td>{{ item.uploaded_at.strftime("%d-%m-%Y %H:%M") }}</td>
+
+					<td>
+
+						<a href="/delete-report/{{ item.id }}"
+						class="btn btn-danger btn-sm"
+						onclick="return confirm('Delete this report?')">
+
+							🗑 Delete
+
+						</a>
+
+					</td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+	
+    <!-- AI Recommendation -->
+
+    <div class="card shadow-sm p-4 border-start border-5 border-primary">
+
+        <h4>
+
+            🤖 AI Recommendation
+
+        </h4>
+
+        <hr>
+
+        <div class="alert alert-light">
+
+    <pre style="white-space: pre-wrap;
+font-family: inherit;
+margin:0;">
+
+{{ ai_recommendation }}
+
+    </pre>
+
+</div>
+
+        <div class="alert alert-success mt-3">
+
+            <strong>
+
+                💰 Potential Monthly Savings
+
+            </strong>
+
+            <br>
+
+            ₹{{ report.estimated_savings }}
+
+        </div>
+
+    </div>
+
+    {% else %}
+
+    <div class="alert alert-info text-center">
+
+        <h4>
+
+            No Billing Report Uploaded
+
+        </h4>
+
+        <p>
+
+            Upload your first cloud billing CSV to begin analyzing costs.
+
+        </p>
+
+        <a href="/uploads"
+           class="btn btn-primary">
+
+            Upload First Report
+
+        </a>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+{% if report %}
+
+<script>
+
+const ctx = document.getElementById("costChart");
+
+new Chart(ctx, {
+
+    type: "bar",
+
+    data: {
+
+        labels: {{ chart_labels|tojson }},
+
+        datasets: [{
+
+            label: "Highest Service Cost",
+
+            data: {{ chart_values|tojson }},
+
+            backgroundColor: "#2563eb",
+
+            borderRadius: 10
+
+        }]
+
+    },
+
+    options: {
+
+        responsive: true,
+
+        plugins: {
+
+            legend: {
+
+                display: false
+
+            }
+
+        },
+
+        scales: {
+
+            y: {
+
+                beginAtZero: true
+
+            }
+
+        }
+
+    }
+
+});
+
+</script>
+
+
+
+<script>
+
+const searchInput = document.getElementById("searchInput");
+
+if (searchInput) {
+
+    searchInput.addEventListener("keyup", function () {
+
+        let filter = this.value.toLowerCase();
+
+        let rows = document.querySelectorAll("tbody tr");
+
+        rows.forEach(function(row){
+
+            row.style.display = row.innerText.toLowerCase().includes(filter)
+                ? ""
+                : "none";
+
+        });
+
+    });
+
+}
+
+</script>
+
+{% endif %}
 
 {% endblock %}
