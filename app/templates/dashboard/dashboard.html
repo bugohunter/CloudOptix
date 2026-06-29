@@ -1,0 +1,35 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+<h2>
+
+Welcome {{ user.full_name }}
+
+</h2>
+
+<hr>
+
+<div class="card p-4">
+
+<h4>CloudOptix AI Dashboard</h4>
+
+<p>
+
+You are successfully logged in.
+
+</p>
+
+</div>
+
+<a href="/logout" class="btn btn-danger mt-3">
+
+Logout
+
+</a>
+
+</div>
+
+{% endblock %}

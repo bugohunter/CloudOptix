@@ -1,0 +1,31 @@
+body{
+
+    font-family: "Segoe UI", sans-serif;
+
+}
+
+.hero{
+
+    padding:100px 0;
+
+}
+
+.card{
+
+    border:none;
+
+    border-radius:15px;
+
+}
+
+.btn-primary{
+
+    border-radius:10px;
+
+}
+
+.navbar-brand{
+
+    font-size:24px;
+
+}
