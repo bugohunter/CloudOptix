@@ -4,6 +4,7 @@ Flask-Login
 Flask-Migrate
 Flask-Bcrypt
 Flask-WTF
+email-validator
 python-dotenv
 psycopg2-binary
 pandas
