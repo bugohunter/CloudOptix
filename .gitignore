@@ -6,3 +6,7 @@ instance/
 uploads/*
 reports/*
 *.db
+.vscode/
+*.sqlite3
+*.log
+.pytest_cache/
