@@ -10,33 +10,40 @@
 
     <div class="card p-4">
 
-        <form method="POST"
-              enctype="multipart/form-data">
+        <form method="POST" enctype="multipart/form-data">
 
             <div class="mb-3">
 
                 <label class="form-label">
-
                     Select Billing CSV
-
                 </label>
 
                 <input
-                    class="form-control"
                     type="file"
                     name="billing_file"
-                    accept=".csv">
+                    class="form-control"
+                    accept=".csv"
+                    required>
 
             </div>
 
-            <button
-                class="btn btn-primary">
-
+            <button class="btn btn-primary">
                 Upload Report
-
             </button>
 
         </form>
+
+        <hr>
+
+        {% if table %}
+
+            <h4 class="mt-4">
+                CSV Preview
+            </h4>
+
+            {{ table|safe }}
+
+        {% endif %}
 
     </div>
 
