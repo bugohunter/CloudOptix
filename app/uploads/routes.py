@@ -8,10 +8,12 @@ from flask import (
     current_app
 )
 
+from flask_login import current_user
+from app import db
+from app.models.billing_report import BillingReport
+from app.services.analytics_service import AnalyticsService
 from flask_login import login_required
 from werkzeug.utils import secure_filename
-
-from app.services.analytics_service import AnalyticsService
 
 from . import uploads
 
@@ -45,7 +47,20 @@ def upload():
             flash("CSV uploaded successfully!", "success")
 
             summary = AnalyticsService.analyze_csv(filepath)
+            report = BillingReport(
+                filename=filename,
+                total_cost=summary["total_cost"],
+                total_services=summary["total_services"],
+                highest_service=summary["highest_service"],
+                highest_cost=summary["highest_cost"],
+                average_cost=summary["average_cost"],
+                estimated_savings=summary["estimated_savings"],
+                user_id=current_user.id
+            )
 
+            db.session.add(report)
+            db.session.commit()
+            
             print(summary)
 
             df = pd.read_csv(filepath)
