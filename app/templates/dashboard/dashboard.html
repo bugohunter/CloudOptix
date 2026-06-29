@@ -2,33 +2,64 @@
 
 {% block content %}
 
-<div class="container mt-5">
+<div class="container mt-4">
 
-<h2>
+    <h2 class="mb-4">
+        Welcome, {{ user.full_name }} 👋
+    </h2>
 
-Welcome {{ user.full_name }}
+    <div class="row">
 
-</h2>
+        <div class="col-md-3">
+            <div class="card shadow-sm text-center p-3">
+                <h6>Cloud Health Score</h6>
+                <h2 class="text-success">92%</h2>
+            </div>
+        </div>
 
-<hr>
+        <div class="col-md-3">
+            <div class="card shadow-sm text-center p-3">
+                <h6>Monthly Cost</h6>
+                <h2>₹74,530</h2>
+            </div>
+        </div>
 
-<div class="card p-4">
+        <div class="col-md-3">
+            <div class="card shadow-sm text-center p-3">
+                <h6>Estimated Savings</h6>
+                <h2 class="text-primary">₹12,380</h2>
+            </div>
+        </div>
 
-<h4>CloudOptix AI Dashboard</h4>
+        <div class="col-md-3">
+            <div class="card shadow-sm text-center p-3">
+                <h6>Reports Uploaded</h6>
+                <h2>0</h2>
+            </div>
+        </div>
 
-<p>
+    </div>
 
-You are successfully logged in.
+    <div class="card mt-5 shadow-sm">
 
-</p>
+        <div class="card-body">
 
-</div>
+            <h4>Recent Activity</h4>
 
-<a href="/logout" class="btn btn-danger mt-3">
+            <hr>
 
-Logout
+            <p>No billing reports uploaded yet.</p>
 
-</a>
+            <a href="#"
+               class="btn btn-primary">
+
+                Upload Billing Report
+
+            </a>
+
+        </div>
+
+    </div>
 
 </div>
 

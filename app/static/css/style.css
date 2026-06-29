@@ -1,31 +1,238 @@
+/* ===========================
+   CloudOptix AI - Main Styles
+=========================== */
+
 body{
-
-    font-family: "Segoe UI", sans-serif;
-
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background:#f5f7fb;
+    color:#1f2937;
 }
 
-.hero{
+/* Navbar */
 
-    padding:100px 0;
-
-}
-
-.card{
-
-    border:none;
-
-    border-radius:15px;
-
-}
-
-.btn-primary{
-
-    border-radius:10px;
-
+.navbar{
+    background:#111827 !important;
+    box-shadow:0 3px 10px rgba(0,0,0,.12);
 }
 
 .navbar-brand{
+    font-size:28px;
+    font-weight:700;
+}
 
-    font-size:24px;
+.nav-link{
+    color:#ffffff !important;
+    margin-left:10px;
+    transition:.3s;
+}
+
+.nav-link:hover{
+    color:#38bdf8 !important;
+}
+
+/* Hero */
+
+.hero{
+    padding:90px 0;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:58px;
+    font-weight:700;
+}
+
+.hero p{
+    font-size:20px;
+    color:#6b7280;
+}
+
+/* Cards */
+
+.card{
+    border:none;
+    border-radius:18px;
+    background:#ffffff;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 12px 28px rgba(0,0,0,.12);
+}
+
+.card h6{
+    color:#6b7280;
+    font-weight:600;
+    margin-bottom:15px;
+}
+
+.card h2{
+    font-size:42px;
+    font-weight:700;
+}
+
+/* Dashboard */
+
+.dashboard-title{
+    font-size:40px;
+    font-weight:700;
+    margin-bottom:35px;
+}
+
+/* Health Score */
+
+.health-score{
+    color:#16a34a;
+}
+
+/* Cost */
+
+.monthly-cost{
+    color:#111827;
+}
+
+/* Savings */
+
+.savings{
+    color:#2563eb;
+}
+
+/* Reports */
+
+.reports{
+    color:#7c3aed;
+}
+
+/* Progress */
+
+.progress{
+    height:12px;
+    border-radius:10px;
+    margin-top:15px;
+}
+
+.progress-bar{
+    font-weight:bold;
+}
+
+/* Buttons */
+
+.btn-primary{
+    background:#2563eb;
+    border:none;
+    border-radius:10px;
+    padding:10px 22px;
+    transition:.3s;
+}
+
+.btn-primary:hover{
+    background:#1d4ed8;
+}
+
+.btn-success{
+    border-radius:10px;
+}
+
+.btn-danger{
+    border-radius:10px;
+}
+
+/* Forms */
+
+.form-control{
+    border-radius:10px;
+    padding:12px;
+}
+
+.form-control:focus{
+    box-shadow:0 0 0 .2rem rgba(37,99,235,.25);
+}
+
+/* Alerts */
+
+.alert{
+    border-radius:12px;
+}
+
+/* Recent Activity */
+
+.activity-box{
+    min-height:220px;
+}
+
+.activity-title{
+    font-size:28px;
+    font-weight:600;
+    margin-bottom:15px;
+}
+
+/* Upload Button */
+
+.upload-btn{
+    margin-top:20px;
+}
+
+/* Footer */
+
+footer{
+    margin-top:80px;
+    text-align:center;
+    color:#6b7280;
+    padding:20px;
+}
+
+/* Tables */
+
+table{
+    background:white;
+    border-radius:12px;
+    overflow:hidden;
+}
+
+/* Responsive */
+
+@media(max-width:992px){
+
+.card{
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:42px;
+}
+
+.dashboard-title{
+    font-size:32px;
+}
+
+.card h2{
+    font-size:32px;
+}
+
+}
+
+@media(max-width:768px){
+
+.hero{
+    padding:60px 20px;
+}
+
+.hero h1{
+    font-size:34px;
+}
+
+.hero p{
+    font-size:17px;
+}
+
+.navbar-brand{
+    font-size:22px;
+}
+
+.card h2{
+    font-size:28px;
+}
 
 }

@@ -28,10 +28,12 @@ def create_app():
     # Register blueprints
     from app.auth import auth
     from app.dashboard import dashboard
+    from app.uploads import uploads
     from app.routes import main
 
     app.register_blueprint(main)
     app.register_blueprint(auth)
     app.register_blueprint(dashboard)
+    app.register_blueprint(uploads)
 
     return app

@@ -1,0 +1,45 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <h2>📂 Upload Cloud Billing Report</h2>
+
+    <hr>
+
+    <div class="card p-4">
+
+        <form method="POST"
+              enctype="multipart/form-data">
+
+            <div class="mb-3">
+
+                <label class="form-label">
+
+                    Select Billing CSV
+
+                </label>
+
+                <input
+                    class="form-control"
+                    type="file"
+                    name="billing_file"
+                    accept=".csv">
+
+            </div>
+
+            <button
+                class="btn btn-primary">
+
+                Upload Report
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}
